@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
        <h1>标题</h1>
+       <h2>标题</h2>
     </div>
   );
 }
