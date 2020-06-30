@@ -1,0 +1,36 @@
+.yg-index {
+    .yg-index-header {
+      z-index: 100;
+      position: fixed;
+      top:0;
+      left:0;
+      width:100vw;
+      height:50px;
+      background-color: var(--themeColor);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      i.icon.icon-menu {
+  
+      }
+  
+      span.index-header-title {
+        font-size:20px;
+        color:white;
+      }
+  
+      i.icon.icon-soso {
+  
+      }
+    }
+    .yg-index-slider{
+        margin-top:50px;
+        width:100vw;
+        height:160px;
+        img{
+            width:100%;
+            height:160px;
+        }
+    }
+  }

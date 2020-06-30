@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 /* 
   1. 引入的sass 文件默认 后缀名 .scss
 */
