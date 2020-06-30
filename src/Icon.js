@@ -14,6 +14,7 @@ export default class Icon extends Component {
                 <i className="icon icon-radio-check"></i>
                 <i className="icon icon-radio"></i>
                 <i className="icon icon-add"></i>
+                <i className="icon icon-addCommunity"></i>
                 <i className="icon icon-sub"></i>
                 <i className="icon icon-cart-o"></i>
                 <i className="icon icon-cart"></i>

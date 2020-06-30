@@ -5,6 +5,12 @@ class TabBar extends Component {
     state = {
         activeTab: "home"
     }
+    componentWillUnmount(){
+        console.log("组件销毁");
+    }
+    componentDidUpdate(){
+        console.log("tabbar 组件更新");
+    }
     componentDidMount() {
         // 页面重新加载的时候 获取当前页面的 activeTab
         let activeTab = window.location.hash.split("/")[1];

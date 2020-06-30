@@ -11,6 +11,7 @@ import Community from "./components/community/Community"
 import Cart from "./components/cart/Cart"
 import My from "./components/my/My"
 import Category from "./components/category/Category"
+import Demo from "./demo"
 import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/cart" render={() => <TabBar><Cart></Cart></TabBar>}></Route>
           <Route exact path="/my" render={() => <TabBar><My></My></TabBar>}></Route>
           <Route exact path="/category" render={() => <Category></Category>}></Route>
+          <Route exact path="/demo" render={() => <Demo></Demo>}></Route>
           <Redirect to="/"></Redirect>
         </Switch>
       </Router>
