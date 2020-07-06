@@ -1,194 +1,395 @@
-# 1. 接口数据
+# 1 创建项目
 
-## 1.1. 商城接口
-***主要接口字段说明***
-***ret 接口标识码 等于0时，接口处理成功，非0时 接口信息出错***
-***msg 接口返回信息说明***
-***imgs 逗号隔开字符串***
-***wdata 接口数据返回字段（对象)***
+打开终端，使用`create-react-app`创建项目
 
-1. 获取短信验证码
+```bash
+npx create-react-app ygshop
+```
 
-   ```json
-   @url http://s.linweiqin.com/api/s/getMobileCode
-   @method post/get
-   @params mobile
-   @return msg,ret,wdata
-   @wdata: null
-   ```
+# 2 引入项目需要的图标
 
-1. 用户注册接口
++ 在image文件夹有雪碧图 `icon.png`
 
-   ```json
-   @url http://s.linweiqin.com/api/s/createUser
-   @method post/get
-   @params username,password,code(验证码)
-   @return msg,ret,wdata
-   @wdata: username(名称),user_id,avator_url
-   ```
+  ![icon]( 项目步骤.assets/icon.png)
 
-2. 用户登录接口
++ 在public文件夹下面创建`icon.css`文件，专门截取某个图标的位置
 
-   ```json
-   @url http://s.linweiqin.com/api/s/loginCheck
-   @method post/get
-   @params username,password
-   @return msg,ret,wdata
-   @wdata: oauth_token(登录凭证),oauth_expire_time(登录凭证过期时间),user_id(用户ID),username(名称),avator_url(头像路径)
-   ```
+  ```css
+  .icon {
+      display         : inline-block;
+      background-image: url(./images/icon.png);
+      background-size : 350px 350px;
+      width           : 30px;
+      height          : 30px;
+  }
+  
+  .icon-menu {
+      background-position: -317px 5px;
+  }
+  
+  .icon-soso {
+      background-position: -320px -21px;
+  }
+  
+  .icon-home {
+      background-position: -110px -4px;
+      background-size    : 280px 280px;
+  }
+  
+  .icon-home-o {
+      background-position: -110px -33px;
+      background-size    : 280px 280px;
+  }
+  
+  .icon-community {
+      background-position: -73px -4px;
+      background-size    : 280px 280px;
+  }
+  
+  .icon-community-o {
+      background-position: -73px -33px;
+      background-size    : 280px 280px;
+  }
+  
+  .icon-return {
+      background-position: -280px -10px;
+  }
+  
+  .icon-add {
+      background-position: -320px -175px;
+  }
+  
+  .icon-radio-check {
+      background-size    : 300px 300px;
+      background-position: -95px -128px;
+  }
+  
+  .icon-radio {
+      background-size    : 300px 300px;
+      background-position: -127px -128px;
+  }
+  
+  .icon-sub {
+      background-size    : 200px 200px;
+      background-position: -106px -25px;
+      width              : 20px;
+      height             : 20px;
+  }
+  
+  .icon-add {
+      background-size    : 200px 200px;
+      background-position: -106px -4px;
+      width              : 20px;
+      height             : 20px;
+  }
+  
+  .icon-cart {
+      background-size    : 280px 280px;
+      background-position: -36px -4px;
+  }
+  
+  .icon-cart-o {
+      background-size    : 280px 280px;
+      background-position: -36px -33px;
+  }
+  .icon-my {
+      background-size    : 280px 280px;
+      background-position: 0 -4px;
+  }
+  .icon-my-o {
+      background-size    : 280px 280px;
+      background-position: 0 -33px;
+  }
+  .icon-pay{
+      background-position: 0 -250px;
+      background-size: 280px 280px;
+  }
+  .icon-recieve{
+      background-size: 280px 280px;
+      background-position: -32px -250px;
+  }
+  .icon-recieve-good{
+      background-position: -64px -250px;
+      background-size: 280px 280px;
+  }
+  .icon-cancel{
+      background-position: -92px -250px;
+      background-size: 280px 280px;
+  }
+  .icon-aftersale{
+      background-position: -120px -250px;
+      background-size: 280px 280px;
+  
+  ```
 
-3. 用户退出接口
++ 在src文件夹下面创建`icon.js`文件
 
-   ```json
-   @url http://s.linweiqin.com/api/s/logout
-   @method post/get
-   @params oauth_token
-   @return msg,ret,wdata
-   @wdata: 空
-   ```
+  ```js
+  import React, { Component } from 'react'
+  export default class Icon extends Component {
+      render() {
+          return (
+              <div>
+                  <i className="icon icon-menu"></i>
+                  <i className="icon icon-soso"></i>
+                  <i className="icon icon-home"></i>
+                  <i className="icon icon-home-o"></i>
+                  <i className="icon icon-community"></i>
+                  <i className="icon icon-community-o"></i>
+                  <i className="icon icon-return"></i>
+                  <i className="icon icon-radio-check"></i>
+                  <i className="icon icon-radio"></i>
+                  <i className="icon icon-add"></i>
+                  <i className="icon icon-sub"></i>
+                  <i className="icon icon-cart-o"></i>
+                  <i className="icon icon-cart"></i>
+                  <i className="icon icon-my"></i>
+                  <i className="icon icon-my-o"></i>
+                  <i className="icon icon-pay"></i>
+                  <i className="icon icon-recieve"></i>
+                  <i className="icon icon-recieve-good"></i>
+                  <i className="icon icon-cancel"></i>
+                  <i className="icon icon-aftersale"></i>
+              </div>
+          )
+      }
+  }
+  ```
 
-4. 用户个人信息修改
+# 2.1初始化样式
 
-   ```json
-   @url http://s.linweiqin.com/api/s/updateUserInfo
-   @method post/get
-   @params username,avator_url,oauth_token
-   @return msg,ret,wdata
-   @wdata: 空
-   ```
+在public文件夹生成`common.css`文件作为初始化样式
 
-5. 重置密码
+```css
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    --themeColor:#ec3c4e
+}
+```
 
-   ```json
-   @url http://s.linweiqin.com/api/s/updatePassword
-   @method post/get
-   @params currenPassword,updatePassword
-   @return msg,ret,wdata
-   @wdata: 空
-   ```
-   
-6. 首页轮播图
-   ```json
-   @url http://s.linweiqin.com/api/s/getIndexLoopimg
-   @method post/get
-   @params null
-   @return msg,ret,wdata
-   @wdata: loopimg_url(轮播图图片路径),loopimg_title(轮播图标题),loopimg_href(轮播图超链接)
-   ```
-7. 产品接口
-   ```json
-   @url http://s.linweiqin.com/api/s/getProducts
-   @method post/get
-   @params cid(可选)
-   @return msg,ret,wdata
-   @wdata: pid(产品ID),cid(分类ID),product_name(产品名称),product_origin_price(产品原价),product_price(产品价格),product_spec(产品规格),product_url(产品首图),product_urls(产品轮播图),product_desc(产品详情),created_at(创建时间)
-   ```
-8. 分类接口
-   ```json
-   @url http://s.linweiqin.com/api/s/getCategorys
-   @method post/get
-   @params null
-   @return msg,ret,wdata
-   @wdata: cid(分类ID),category_name(分类名称),created_at(创建时间),has_sub(是否有下级),category_url(分类图片),sub_category(子类分类)
-   ```
-9. 商品详情接口
-   ```json
-   @url http://s.linweiqin.com/api/s/getProductDetail
-   @method post/get
-   @params pid
-   @return msg,ret,wdata
-   @wdata: call(020电话),pid(产品ID),cid(分类ID),product_name(产品名称),product_origin_price(产品原价),product_price(产品价格),product_spec(产品规格),product_url(产品首图),product_urls(产品轮播图),product_desc(产品详情),created_at(创建时间)
-   ```
-10. 地址创建
-   ```json
-   @url http://s.linweiqin.com/api/s/createUserAddress
-   @method post/get
-   @params address(详细地址),address_name(收件人),address_mobile(联系方式),oauth_token
-   @return msg,ret,uaid
-   @uaid:  地址ID
-   ```
-11. 地址修改
-   ```json
-   @url http://s.linweiqin.com/api/s/updateUserAddress
-   @method post/get
-   @params address(详细地址),address_name(收件人),address_mobile(联系方式),oauth_token
-   @return msg,ret,uaid
-   @uaid:  地址ID
-   ```
-12. 地址删除
-   ```json
-   @url http://s.linweiqin.com/api/s/deleteUserAddress
-   @method post/get
-   @params uaid,oauth_token
-   @return msg,ret,uaid
-   @uaid:  地址ID
-   ```
-13. 地址列表
-   ```json
-   @url http://s.linweiqin.com/api/s/getUserAddressList
-   @method post/get
-   @params oauth_token
-   @return msg,ret,wdata
-   @wdata: address(详细地址),address_name(收件人),address_mobile(联系方式),uaid(地址ID)
-   ```
-10. 购物车接口
-   ```json
-   @url http://s.linweiqin.com/api/s/getCarts
-   @method post/get
-   @params oauth_token
-   @return msg,ret,wdata
-   @wdata: ucid(购物车ID),pid(产品ID),uid(用户ID),product_name(产品名称),product_price(产品价格),product_spec(产品规格),product_url(产品首图),product_number(购物车数量),created_at(创建时间)
-   ```
-11. 购物车增减接口
-   ```json
-   @url http://s.linweiqin.com/api/s/updateCarts
-   @method post/get
-   @params action 参数默认为 add
-   @params 当 action 等于 add 时, productNumber(增加数量),pid(产品ID),oauth_token
-   @params 当 action 等于 reduce 时,productNumber(减少数量),pid(产品ID),oauth_token
-   @params 当 action 等于 delete 时,pid(产品ID),oauth_token
-   @return msg,ret,wdata
-   @wdata: 空
-   ```
-12. 订单详情
-   ```json
-   @url http://s.linweiqin.com/api/s/getOrders
-   @method post/get
-   @params oauth_token
-   @return msg,ret,wdata
-   @wdata: uoid(订单ID),order_price(订单价格),order_express_info(订单地址信息),order_status(订单状态，0未支付，1已支付，2订单取消),order_info(商品详情)
-   @order_info : ucid(购物车ID),uid(用户ID),pid(产品ID),product_price(产品价格),product_name(产品名称),product_url(产品首图),product_number(购物车数量),
-   ```
-13. 订单创建
-   ```json
-   @url http://s.linweiqin.com/api/s/createOrder
-   @method post/get
-   @params oauth_token,uaid
-   @return msg,ret,uoid
-   @uoid:  订单ID
-   ```
-14. 订单取消
-   ```json
-   @url http://s.linweiqin.com/api/s/cancelOrder
-   @method post/get
-   @params oauth_token,uoid
-   @return msg,ret,wdata
-   @wdata: 空
-   ```
+在 `public/index.html` 页面引入  图标 css 文件和初始化样式
 
-16. 微信预支付返回数据接口
-   ```json
-   @url http://s.linweiqin.com/api/s/wxPrepay
-   @method post/get
-   @params oauth_token,uoid
-   @return msg,ret,payUrl
-   @payUrl: 支付跳转链接
-   ```
-17. 精选产品接口
-   ```json
-   @url http://s.linweiqin.com/api/s/getHotProducts
-   @method post/get
-   @params cid(可选)
-   @return msg,ret,wdata
-   @wdata: pid(产品ID),cid(分类ID),product_name(产品名称),product_origin_price(产品原价),product_price(产品价格),product_spec(产品规格),product_url(产品首图),product_urls(产品轮播图),product_desc(产品详情),created_at(创建时间)
-   ```
+```html
+  <link rel="stylesheet" href="%PUBLIC_URL%/icon.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/common.css">
+```
+
+安装axios
+
+```js
+npm i axios --save
+```
+
+安装路由react路由
+
+```js
+npm i react-router-dom --save
+```
+
+项目有用到swiper库，所以也要安装
+
+```js
+npm i swiper --save
+```
+
+# 3. 安装对css 预处理器sass 支持
+
+```
+npm install node-sass --dev
+```
+
+# 3.1定义开发配置
+
+在项目根目录（跟src，public同级）创建两个文件`.env.development`和`.env.production`，配置axios的url的地址
+
+> 1，关于文件名：必须以如下方式命名，不要乱起名，也无需专门手动控制加载哪个文件
+>
+> 　　.env 全局默认配置文件，不论什么环境都会加载合并
+>
+> 　　.env.development 开发环境下的配置文件
+>
+> 　　.env.production 生产环境下的配置文件
+
+两个文件的内容都是以下url的配置
+
+```js
+REACT_APP_URL = http://s.linweiqin.com/api/s/
+```
+
+配置好之后就可以使用了，这里我是在src文件创建util库存放`axios.js`
+
+```js
+const instance = axios.create({
+    baseURL: process.env.REACT_APP_URL
+  });
+```
+
+![env文件配置]( 项目步骤.assets/env文件配置.png)
+
+这里的`process`就是去访问.env的文件里面的变量
+
+# 4.添加移动端的适配方案
+
+> Flex 布局 + rem + flexible+sass
+
+## React
+
+1. 暴露webpack配置，即 react-scripts 包
+
+```bash
+npm run eject
+```
+
+⚠️ 在运行该命令的时候，要先将已经修改的文件提交到本地仓库中过，否则会报错！
+
+2. 安装项目项目需要的包 `lib-flexible` 、 `postcss-px2rem` 和 `postcss-loader`：
+
+```bash
+npm install postcss-px2rem lib-flexible --save
+npm install postcss-loader --dev
+```
+
+3. 在项目的 public/index.html 入口文件添加 
+
+```html
+<meta name="viewport" content="width=device-width,inital-scale=1.0,
+    maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+```
+
+4. 然后在项目入口文件 index.js 中引入 `lib-flexible`
+
+```js
+import "lib-flexible" ;
+```
+
+5. 接着，在项目config目录下的 webpack.config.js 中引入 `postcss-px2rem`
+
+```bash
+const px2rem = require("postcss-px2rem");
+```
+
+![image-20200627220634758](%20%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4.assets/image-20200627220634758.png)
+
+- 在 webpack.config.js 的 `postcss-loader` loader里面添加 ：
+
+```js
+{
+        loader: require.resolve("postcss-loader"),
+        options: {
+          /* 省略代码... */
+          plugins: () => [
+            require( postcss-flexbugs-fixes ),
+            require( postcss-preset-env )({
+              autoprefixer: {
+                flexbox:  no-2009 ,
+              },
+              stage: 3,
+            }),
+            px2rem({remUnit: 37.5}), // 添加的内容
+            /* 省略代码... */
+          ],
+          sourceMap: isEnvProduction && shouldUseSourceMap,
+        },
+      },
+```
+
+
+
+![image-20200627220813596](%20%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4.assets/image-20200627220813596.png)
+
+重新启动项目，发现里面的px单位都变成了rem
+
+注意：使用 px2rem-loader 后再使用px上有些不同：
+    直接写 px ，编译后会直接转化成rem —— 除开下面两种情况，其他长度用这个
+    在 px 后面添加 /*no*/ ，不会转化 px，会原样输出。 —— 一般border需用这个
+    在 px 后面添加 /*px*/ ，会根据 dpr 的不同，生成三套代码。—— 一般字体需用这个,默认是@2x图 style
+
+```css
+.App {
+  .header {
+    border: 10px solid #ddd; /*no*/
+    color:#f00;
+    font-size: 100px; /*px*/  
+  }
+}
+```
+
+## Vue
+
+vue项目配置px2rem
+
+- 首先，我们使用 vue 的脚手架 vue-cli 初始化一个 webpack 项目（前提是已经安装过 vue-cli，具体不再阐述），一些选项根据自己项目需要选择。
+
+```
+vue init webpack my-app
+```
+
+- 命令执行之后，会在当前目录生成一个以“my-app”命名的项目文件夹。进入项目目录：
+
+```
+cd my-app
+```
+
+- 使用`yarn` 安装项目所需依赖后，安装 `lib-flexible` 和  `px2rem-loader`：
+
+```
+yarn add lib-flexible
+yarn add px2rem-loader --dev
+```
+
+- 在入口页面 index.html 中设置``标签：
+
+```
+<meta name="viewport" content="width=device-width,inital-scale=1.0,
+    maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+```
+
+- 然后在项目入口文件 main.js 中引入 `lib-flexible`：
+
+```
+  import "lib-flexible/flexible.js" ;
+```
+
+- **用 vue-cli3 创建的 vue 项目配置 px2rem-loader 如下：**
+
+    找到文件 node_modules/@vue/cli-service/lib/config/css.js，在css loader之前添加规则，如下所示：
+
+  ![image-20200624175748054](%20%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4.assets/image-20200624175748054.png)
+
+  ```js
+  rule
+      .use('px2rem-loader')
+      .loader('px2rem-loader')
+      .options({emUnit: 75})
+  ```
+
+- 最后，使用 `yarn dev` 重启项目，会发现自己设置的px被转为rem 了。
+
+![image-20200624084208330](%20%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4.assets/image-20200624084208330.png)
+
+
+
+## 适用情况 & 不适用情况
+
+- 以上实现转换适用于：
+
+  （1）vue 组件中编写的下的css。
+
+  （2）从 react 项目的 index.js 或者 vue 项目的 main.js 中通过`import ../../static/css/reset.css `引入css。
+
+  （3）在 vue 组件的`import ../../static/css/reset.css `中引入css。
+
+- 另外的情况不适用：
+
+  （1）在 vue 组件的中通过`@import "../../static/css/reset.css"` (可考虑上面（2）、（3）的形式引入)。
+
+  （2）外部样式：``。
+
+  （3）元素内部样式：`style="height: 417px; width: 550px;"`。
+
+
+
